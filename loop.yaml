@@ -1,0 +1,17 @@
+---
+- name: loop test
+  hosts: all
+  gather-facts: no
+  
+  vars:
+    var1: 1,2,3,4,5
+
+  taks:
+    - name: portsl
+      set_fact:
+        list_var1: "{{ var1.split(',') }}"
+
+    - name:
+      debug:
+        msg: "{{ list_var1 }}"
+        #      loop: "{{ list_var1 }}"
