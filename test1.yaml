@@ -1,7 +1,7 @@
 ---
 - hosts: localhost
   vars:
-    - s: "Name1:Value1,Name2:Value2,Name3:Value3"
+    - s: "prs:25,app:26,dat:29"
     - nlayer: "[{% for sub in s.split(',') %}{{sub.split(':')}},{% endfor %}]"
   tasks:
     - set_fact:
