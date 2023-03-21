@@ -6,9 +6,11 @@
   tasks:
     - set_fact:
         nlayerdict: "{{ dict(nlayer) }}"
-    - debug:
-        msg: "{{ dict(nlayer) }}"
-    - name: Using dict2items
-      ansible.builtin.debug:
-         msg: "{{ item.key }} - {{ item.value }}"
-      loop: "{{ nlayerdict | dict2items }}"
+	  block:
+	  
+        - debug:
+            msg: "{{ dict(nlayer) }}"
+        - name: Using dict2items
+          ansible.builtin.debug:
+            msg: "{{ item.key }} - {{ item.value }}"
+          loop: "{{ nlayerdict | dict2items }}"
