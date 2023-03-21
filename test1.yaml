@@ -1,11 +1,8 @@
+---
 - hosts: localhost
-
+  vars:
+    - s: "Name1:Value1,Name2:Value2,Name3:Value3"
+    - nlayer: "[{% for sub in s.split(',') %}{{sub.split(':')}},{% endfor %}]"
   tasks:
-    - name: Using dict2items
-      ansible.builtin.debug:
-         msg: "{{ item.key }} - {{ item.value }}"
-      loop: "{{ tag_data | dict2items }}"
-      vars:
-        tag_data:
-          Environment: dev
-          Application: payment
+    - debug:
+        msg: "{{ dict(nlayer) }}"
