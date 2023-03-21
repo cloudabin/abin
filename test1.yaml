@@ -4,12 +4,11 @@
     - s: "prs:25,app:26,dat:29"
     - nlayer: "[{% for sub in s.split(',') %}{{sub.split(':')}},{% endfor %}]"
   tasks:
-      - set_fact:
-          nlayerdict: "{{ dict(nlayer) }}"
-      block:	
-        - debug:
-            msg: "{{ dict(nlayer) }}"
-        - name: Using dict2items
-          ansible.builtin.debug:
-             msg: "{{ item.key }} - {{ item.value }}"
-          loop: "{{ nlayerdict | dict2items }}"		
+    - set_fact:
+        nlayerdict: "{{ dict(nlayer) }}"
+    - debug:
+        msg: "{{ dict(nlayer) }}"
+    - name: Using dict2items
+      ansible.builtin.debug:
+         msg: "{{ item.key }} - {{ item.value }}"
+      loop: "{{ nlayerdict | dict2items }}"
