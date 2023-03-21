@@ -13,4 +13,4 @@
         - name: Using dict2items
           ansible.builtin.debug:
             msg: "{{ item.key }} - {{ item.value }}"
-      loop: "{{ nlayerdict | dict2items }}"
+          loop: "{{ nlayerdict | dict2items }}"
