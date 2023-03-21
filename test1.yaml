@@ -6,3 +6,7 @@
   tasks:
     - debug:
         msg: "{{ dict(nlayer) }}"
+    - name: Using dict2items
+      ansible.builtin.debug:
+         msg: "{{ item.key }} - {{ item.value }}"
+      loop: "{{ nlayer | dict2items }}"		
