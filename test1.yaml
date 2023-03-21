@@ -7,10 +7,10 @@
     - set_fact:
         nlayerdict: "{{ dict(nlayer) }}"
     - name:
-        block:
-	      - debug:
+      block:
+        - debug:
             msg: "{{ dict(nlayer) }}"
-          - name: Using dict2items
-            ansible.builtin.debug:
-              msg: "{{ item.key }} - {{ item.value }}"
-        loop: "{{ nlayerdict | dict2items }}"
+        - name: Using dict2items
+          ansible.builtin.debug:
+            msg: "{{ item.key }} - {{ item.value }}"
+      loop: "{{ nlayerdict | dict2items }}"
