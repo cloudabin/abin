@@ -1,0 +1,15 @@
+- hosts: localhost
+  vars:
+    war_files:
+      server1:
+      - file1.war
+      - file2.war
+      server2:
+      - file1.war
+      - file2.war
+      - file3.war
+  tasks:
+    - name: Loop over subelements of the dictionary
+      debug:
+        msg: "Key={{ item.0.key }} value={{ item.1 }}"
+      loop: "{{ war_files | dict2items | subelements('value') }}"
